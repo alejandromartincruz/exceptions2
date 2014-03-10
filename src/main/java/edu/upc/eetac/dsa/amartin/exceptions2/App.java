@@ -23,29 +23,49 @@ import java.io.File;
 import java.util.Scanner;
 
 
+class BigNumberException extends Exception {
+	
+	public BigNumberException () {
+		
+	}
+	
+	public BigNumberException (String message) {
+		super(message);
+	}
+	
+	public String getMessage () {
+		return "Número mayor o igual a 1000 " + super.getMessage();
+	}
+}
+
 public class App 
 {
     public static void main( String[] args )
     {
 		System.out.println( "Ejercicio 1: Exceptions");
-		System.out.println( "=========================" + System.getProperty("line.separator"));
+		System.out.println( "=========================\n");
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.print ("Escribe la ruta del archivo: ");
 		String dato = sc.nextLine();
-		
+	
+		File F;
+		Scanner sc2 = null;
 		try {
-			File F = new File(dato);
-			Scanner sc2 = new Scanner(F);
+			F = new File(dato);
+			sc2 = new Scanner(F);
 			while (sc2.hasNext()) {
 			    int xx = sc2.nextInt();
-			    if (xx>=1000) throw new Exception ("BigNumberException");
+			    if (xx>=1000) throw new BigNumberException("Error");
 			    System.out.println(xx);
 			}
 		}
 		catch (Exception ex) {
 			System.out.println ("Excepcion no esperada: " + ex);
 		}	
+		finally {
+			sc2.close();
+		}
 		
 		
 	}

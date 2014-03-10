@@ -1,3 +1,3 @@
-# clases esenciales 2
+# clases esenciales 2 & 3
 
-The second exercise of the essencial classes section.
+The second and third exercise of the essencial classes section.
